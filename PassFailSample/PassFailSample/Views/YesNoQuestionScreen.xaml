@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassFailSample.Views.YesNoQuestionScreen"
+             BackgroundColor="{StaticResource LightBackgroundColor}"
+             Title="{Binding Settings.NavigationBarTitle}"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.Content>
+        <Grid Padding="{StaticResource GridPadding}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource FirstRowSize}" />
+                <RowDefinition Height="{StaticResource SecondRowSize}" />
+                <RowDefinition Height="{StaticResource ThirdRowSize}" />
+            </Grid.RowDefinitions>
+
+            <Label Text="{Binding Settings.AppName}" Grid.Row="0" Style="{StaticResource CognexFont}"/>
+            <Label Text="{Binding YesNoQuestion}" Grid.Row="1" Style="{StaticResource LargeText}"/>
+            <StackLayout Grid.Row="2">
+                <Button Text="Yes" BackgroundColor="Green" Command="{Binding YesCommand}" />
+                <Button Text="No" BackgroundColor="Red" Command="{Binding NoCommand}" />
+                <Button Text="NA" BackgroundColor="Blue" Command="{Binding NACommand}" />
+            </StackLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>

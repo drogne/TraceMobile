@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassFailSample.Views.FailureFeedbackScreen"
+             BackgroundColor="{StaticResource LightBackgroundColor}"
+             Title="{Binding Settings.NavigationBarTitle}"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.Content>
+        <Grid Padding="{StaticResource GridPadding}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource FirstRowSize}" />
+                <RowDefinition Height="{StaticResource SecondRowSize}" />
+                <RowDefinition Height="{StaticResource ThirdRowSize}" />
+            </Grid.RowDefinitions>
+
+            <Label Text="{Binding Settings.AppName}" Grid.Row="0" Style="{StaticResource CognexFont}"/>
+            <Label Text="{Binding Settings.PromptSelectFailureReason}" Grid.Row="1" Style="{StaticResource LargeText}"/>
+            <ListView x:Name="FailureFeedbackListView"
+                          SeparatorVisibility="None"
+                          HasUnevenRows="True"
+                          ItemsSource="{Binding AvailableButtons}"
+                          BackgroundColor="{StaticResource LightBackgroundColor}"
+                          SeparatorColor="{StaticResource LightBackgroundColor}"
+                          Grid.Row="2">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5,5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource LightBackgroundColor}">
+                                <Button Text="{Binding DisplayName}"
+                                        Style="{StaticResource StandardButtonStyle}"
+                                        Command="{Binding Command}"
+                                        CommandParameter="{Binding DisplayName}"
+                                        BorderColor="{Binding Color}" 
+                                        BackgroundColor="{Binding Color}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>

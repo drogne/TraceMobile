@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utilities="clr-namespace:PassFailSample.Utilities;assembly=PassFailSample"
+             xmlns:converters="clr-namespace:PassFailSample.Converters;assembly=PassFailSample"
+             BackgroundColor="{StaticResource LightBackgroundColor}"
+             x:Class="PassFailSample.Views.UserLoginScreen"
+             Title="{Binding Settings.NavigationBarTitle}"
+             NavigationPage.HasBackButton="False">
+
+    <Grid Padding="{StaticResource GridPadding}">
+        <Grid.RowDefinitions>
+            <!--Change the order so spacing remains the same but do not put anything in the third row-->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1.25*" />
+            <RowDefinition Height="3.4*" />
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Settings.PromptUserLogin}" Grid.Row="0" Style="{StaticResource LargeText}"/>
+        <StackLayout Grid.Row="1" Padding="0,20">
+            <Entry  x:Name ="IDEntry" HorizontalOptions="FillAndExpand" Text="{Binding UserID}" BackgroundColor="White" Grid.Row="1" />
+            <Button Text="ACCEPT" 
+                        Style="{StaticResource StandardButtonStyle}" 
+                        Command="{Binding EntryCompletedCommand}"
+                        BorderColor="{Binding Settings.ColorStandardButton, Converter={converters:StringToColorConverter}}"
+                        BackgroundColor="{Binding Settings.ColorStandardButton, Converter={converters:StringToColorConverter}}" />
+        </StackLayout>
+        <StackLayout Grid.Row="2" Padding="0,40">
+            <Image Source="{utilities:ImageResource PassFailSample.Resources.Images.user.png}" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             x:Class="PassFailSample.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--Define Custom Colors-->
+            <Color x:Key="Primary">#F4D000</Color>
+            <Color x:Key="LightBackgroundColor">#F5F5F5</Color>
+            <Color x:Key="DarkGreyColor">#333333</Color>
+            <Color x:Key="LightGreyColor">#EEEEEE</Color>
+            <Color x:Key="DarkFontColor">#0F070B</Color>
+
+            <!--Define Custom Constants-->
+            <GridLength x:Key="FirstRowSize">.7*</GridLength>
+            <GridLength x:Key="SecondRowSize">1*</GridLength>
+            <GridLength x:Key="ThirdRowSize">3.2*</GridLength>
+            <Thickness x:Key="GridPadding">40,10,40,0</Thickness>
+            <!--<sys:String x:Key="AppTitle">Cognex</sys:String>-->
+
+            <!--Define Navgiation Bar Colors-->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource DarkFontColor}"/>
+            </Style>
+
+            <!--Set up font types for each platform-->
+            <OnPlatform x:Key="FontFamilyName" x:TypeArguments="x:String" iOS="MarkerFelt-Thin" Android="OpenSans" WinPhone="Segoe UI" />
+            
+            <!--Define a generic font type based on the Font Family-->
+            <Style x:Key="FontLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamilyName}" />
+            </Style>
+
+            <!--Define the large label default font style-->
+            <Style x:Key="LargeText" TargetType="Label" BasedOn="{StaticResource FontLabel}">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource DarkFontColor}"/>
+            </Style>
+
+            <!--Define the system label default font style-->
+            <Style x:Key="SystemText" TargetType="Label" BasedOn="{StaticResource LargeText}">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <!--Define the Cognex default font style-->
+            <Style x:Key="CognexFont" TargetType="Label" BasedOn="{StaticResource LargeText}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.iOS>MarkerFelt-Thin</OnPlatform.iOS>
+                            <OnPlatform.Android>Droid Sans Mono</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Comic Sans MS</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <!--Define Button Style-->
+            <Style x:Key="StandardButtonStyle" TargetType="Button">
+                <!--<Setter Property="BorderColor" Value="{StaticResource DarkGreyColor}"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGreyColor}"></Setter>-->
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+            
+            <!--Define Stacklayout Style-->
+            <Style x:Key="StackStyle" TargetType="StackLayout">
+                <Setter Property="Padding" Value="30,0,30,30"></Setter>
+                <Setter Property="Spacing" Value="20"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+            
+            <!--Define the Entry Style-->
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="BackgroundColor" Value="White"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

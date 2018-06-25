@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:PassFailSample.Converters;assembly=PassFailSample"
+             x:Class="PassFailSample.Views.SettingsScreen"
+             BackgroundColor="{StaticResource LightBackgroundColor}"
+             Title="Settings"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                
+                <StackLayout Margin="20,0,20,20">
+                    <Grid Margin="0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Demo Mode" Style="{StaticResource SystemText}" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="Barcode Scanned Screen" Style="{StaticResource SystemText}" />
+                        <Label Grid.Row="2" Grid.Column="0" Text="Failure Feedback Screen" Style="{StaticResource SystemText}" />
+                        <Label Grid.Row="3" Grid.Column="0" Text="Custom Input Screen" Style="{StaticResource SystemText}" />
+                        <Label Grid.Row="4" Grid.Column="0" Text="User Login Screen" Style="{StaticResource SystemText}" />
+                        <Label Grid.Row="5" Grid.Column="0" Text="Use End Timestamp" Style="{StaticResource SystemText}" />
+                        <Switch Grid.Row="0" Grid.Column="2" IsToggled="{Binding Settings.BoolDemoMode}" />
+                        <Switch Grid.Row="1" Grid.Column="2" IsToggled="{Binding Settings.BoolBarcodeScannedScreenEnabled}" />
+                        <Switch Grid.Row="2" Grid.Column="2" IsToggled="{Binding Settings.BoolFailureFeedbackScreenEnabled}" />
+                        <Switch Grid.Row="3" Grid.Column="2" IsToggled="{Binding Settings.BoolCustomInputScreenEnabled}" />
+                        <Switch Grid.Row="4" Grid.Column="2" IsToggled="{Binding Settings.BoolUserLoginScreenEnabled}" />
+                        <Switch Grid.Row="5" Grid.Column="2" IsToggled="{Binding Settings.BoolUseLoggedEntryTime}" />
+                    </Grid>
+
+                    <Label Text="Pass Button Label" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.TextPassButton}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Fail Button Label" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.TextFailButton}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Application Name" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.AppName}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Navigation Bar Title" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.NavigationBarTitle}" Style="{StaticResource EntryStyle}" />
+
+                    <Label Text="Failure Reasons ('; ' separated)" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.ListFailureReasons}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Additional Status Options ('; ' separated)" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.ListAdditionalStatusOptions}" Style="{StaticResource EntryStyle}" />
+
+                    <Label Text="User ID Entry Prompt" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.PromptUserLogin}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Scan Requested Screen Prompt" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.PromptScanStation}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Select Failure Reason Prompt" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.PromptSelectFailureReason}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Specify Failure Reason Prompt" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.PromptSpecifyFailureReason}" Style="{StaticResource EntryStyle}" />
+
+                    <Label Text="Color Green" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.ColorPass}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Color Red" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.ColorFail}" Style="{StaticResource EntryStyle}" />
+                    <Label Text="Color Button" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Settings.ColorStandardButton}" Style="{StaticResource EntryStyle}" />
+
+                    <Label Text="Password" Style="{StaticResource SystemText}" />
+                    <Entry Text="{Binding Password}" Style="{StaticResource EntryStyle}" />
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

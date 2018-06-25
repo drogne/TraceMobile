@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utilities="clr-namespace:PassFailSample.Utilities;assembly=PassFailSample"
+             x:Class="PassFailSample.Views.ScanRequestedScreen"
+             BackgroundColor="{StaticResource LightBackgroundColor}"
+             Title="{Binding Settings.NavigationBarTitle}"
+             NavigationPage.HasBackButton="False">
+ 
+    <ContentPage.Content>
+        <Grid Padding="{StaticResource GridPadding}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource FirstRowSize}" />
+                <RowDefinition Height="{StaticResource SecondRowSize}" />
+                <RowDefinition Height="{StaticResource ThirdRowSize}" />
+            </Grid.RowDefinitions>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToBarcodeScannedScreenCommand}" NumberOfTapsRequired="1"/>
+            </Grid.GestureRecognizers>
+
+            <Label Text="{Binding Settings.AppName}" Grid.Row="0" Style="{StaticResource CognexFont}"/>
+            <Label Text="{Binding Settings.PromptScanStation}" Grid.Row="1" Style="{StaticResource LargeText}" />
+            <!--<Image Source="{utilities:ImageResource PassFailSample.Resources.Images.barcode.png}" Grid.Row="2" Scale=".7" />-->
+            <Image  Source="{Binding BarcodeImage}" Grid.Row="2" Scale="1" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

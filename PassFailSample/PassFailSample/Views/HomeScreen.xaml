@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utilities="clr-namespace:PassFailSample.Utilities;assembly=PassFailSample"
+             BackgroundColor="Black"
+             x:Class="PassFailSample.Views.HomeScreen"
+             Title="{Binding Settings.NavigationBarTitle}">
+
+    <Grid Padding="{StaticResource GridPadding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource FirstRowSize}" />
+            <RowDefinition Height="{StaticResource SecondRowSize}" />
+            <RowDefinition Height="{StaticResource ThirdRowSize}" />
+        </Grid.RowDefinitions>
+
+        <Grid.GestureRecognizers>
+            <!--<TapGestureRecognizer Command="{Binding BypassCommand}" NumberOfTapsRequired="2"/>-->
+            <TapGestureRecognizer Command="{Binding NavigateToScanRequestedScreenCommand}" NumberOfTapsRequired="1"/>
+        </Grid.GestureRecognizers>
+
+        <Label Text="{Binding Settings.AppName}" Grid.Row="0" Style="{StaticResource CognexFont}" TextColor ="White"/>
+        <Label Text="A bold new standard in mobile barcode reading technology" 
+                   Grid.Row="1" Style="{StaticResource LargeText}" TextColor ="White"/>
+        <Image Grid.Row="2" Source="{utilities:ImageResource PassFailSample.Resources.Images.mx1000_barcode_reader.png}" />
+
+    </Grid>
+
+</ContentPage>

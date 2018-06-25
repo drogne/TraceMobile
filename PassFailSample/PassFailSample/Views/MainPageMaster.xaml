@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:PassFailSample.Converters;assembly=PassFailSample"
+             xmlns:behaviors="clr-namespace:PassFailSample.Behaviors;assembly=PassFailSample"
+             x:Class="PassFailSample.Views.MainPageMaster"
+             Title="Master">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="MenuItemsListView"
+                          SeparatorVisibility="Default"
+                          HasUnevenRows="true"
+                          ItemsSource="{Binding AvailablePages}"
+                          Opacity=".9"
+                      BackgroundColor="{StaticResource LightGreyColor}"
+                      SeparatorColor="{StaticResource DarkGreyColor}">
+
+                <ListView.Header>
+                    <Grid BackgroundColor="{StaticResource Primary}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding Settings.AppName}" Style="{StaticResource CognexFont}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                    </Grid>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                                <Label VerticalOptions="FillAndExpand" Text="{Binding DisplayName}" Style="{StaticResource LargeText}" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Behaviors>
+                    <behaviors:ListViewSelectedItemBehavior Command="{Binding NavigateCommand}" Converter="{StaticResource SelectedItemConverter}" />
+                </ListView.Behaviors>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
