@@ -21,26 +21,13 @@ namespace PassFailSample.IoC
             builder.RegisterType<DataStorage>().SingleInstance();
             builder.RegisterType<IdleTimeoutTimer>().SingleInstance();
             builder.RegisterType<Settings>().SingleInstance();
+            builder.RegisterType<Session>().SingleInstance();
 
             builder.RegisterType<MainPageMaster>().AsSelf().As<IViewFor>().SingleInstance();
             builder.RegisterType<MainPageMasterViewModel>().SingleInstance();
 
             builder.RegisterType<HomeScreen>().AsSelf().As<IViewFor>().SingleInstance();
             builder.RegisterType<HomeScreenViewModel>().SingleInstance();
-
-            builder.RegisterType<ScanRequestedScreen>().AsSelf().As<IViewFor>().SingleInstance();
-            builder.RegisterType<ScanRequestedScreenViewModel>().SingleInstance();
-
-            builder.RegisterType<BarcodeScannedScreen>().AsSelf().As<IViewFor>().SingleInstance();
-            builder.RegisterType<BarcodeScannedScreenViewModel>().SingleInstance();
-            builder.RegisterType<YesNoQuestionScreen>().AsSelf().As<IViewFor>().SingleInstance();
-            builder.RegisterType<YesNoQuestionScreenViewModel>().SingleInstance();
-
-            builder.RegisterType<FailureFeedbackScreen>().AsSelf().As<IViewFor>().SingleInstance();
-            builder.RegisterType<FailureFeedbackScreenViewModel>().SingleInstance();
-
-            builder.RegisterType<CustomInputScreen>().AsSelf().As<IViewFor>().SingleInstance();
-            builder.RegisterType<CustomInputScreenViewModel>().SingleInstance();
 
             builder.RegisterType<SettingsScreen>().AsSelf().As<IViewFor>().SingleInstance();
             builder.RegisterType<SettingsScreenViewModel>().SingleInstance();
@@ -50,6 +37,12 @@ namespace PassFailSample.IoC
 
             builder.RegisterType<UserLoginScreen>().AsSelf().As<IViewFor>().SingleInstance();
             builder.RegisterType<UserLoginScreenViewModel>().SingleInstance();
+
+            builder.RegisterType<OrderScreen>().AsSelf().As<IViewFor>().SingleInstance();
+            builder.RegisterType<OrderViewModel>().SingleInstance();
+
+            builder.RegisterType<ComponentScreen>().AsSelf().As<IViewFor>().SingleInstance();
+            builder.RegisterType<ComponentViewModel>().SingleInstance();
 
             IoCContainer.Container = builder.Build();
         }

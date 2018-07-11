@@ -25,19 +25,20 @@ namespace PassFailSample.Models
                 {
                     ScreensList.Add(typeof(UserLoginScreenViewModel));
                 }
-                ScreensList.Add(typeof(ScanRequestedScreenViewModel)); // always add
-                if (settings.BoolBarcodeScannedScreenEnabled)
-                {
-                    ScreensList.Add(typeof(BarcodeScannedScreenViewModel));
-                }
-                if (settings.BoolFailureFeedbackScreenEnabled)
-                {
-                    ScreensList.Add(typeof(FailureFeedbackScreenViewModel));
-                }
-                if (settings.BoolCustomInputScreenEnabled)
-                {
-                    ScreensList.Add(typeof(CustomInputScreenViewModel));
-                }
+                ScreensList.Add(typeof(OrderViewModel)); // always add
+                ScreensList.Add(typeof(ComponentViewModel)); // always add
+                //if (settings.BoolBarcodeScannedScreenEnabled)
+                //{
+                //    ScreensList.Add(typeof(BarcodeScannedScreenViewModel));
+                //}
+                //if (settings.BoolFailureFeedbackScreenEnabled)
+                //{
+                //    ScreensList.Add(typeof(FailureFeedbackScreenViewModel));
+                //}
+                //if (settings.BoolCustomInputScreenEnabled)
+                //{
+                //    ScreensList.Add(typeof(CustomInputScreenViewModel));
+                //}
             }
         }
 

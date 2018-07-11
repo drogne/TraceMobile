@@ -202,7 +202,7 @@ namespace PassFailSample.Utilities.Navigation
             catch (Exception ex)
             {
 #if DEBUG
-                await Application.Current.MainPage.DisplayAlert("Exception", ex.Message, "Ok");
+                //await Application.Current.MainPage.DisplayAlert("Exception", ex.Message, "Ok");
 #endif
             }
             finally
