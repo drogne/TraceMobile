@@ -65,7 +65,7 @@ namespace PassFailSample.Helpers
         }
         public string NavigationBarTitle
         {
-            get => AppSettings.GetValueOrDefault(nameof(NavigationBarTitle), "Demo App");
+            get => AppSettings.GetValueOrDefault(nameof(NavigationBarTitle), "Traceability Mobile");
             set => AppSettings.AddOrUpdateValue(nameof(NavigationBarTitle), value);
         }
         public string TextPassButton

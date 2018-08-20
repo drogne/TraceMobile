@@ -19,10 +19,10 @@
         </Grid.GestureRecognizers>
 
         <Label Text="{Binding Settings.AppName}" Grid.Row="0" Style="{StaticResource CognexFont}" TextColor ="White"/>
-        <Label Text="A bold new standard in mobile barcode reading technology" 
+        <!--A bold new standard in mobile barcode reading technology-->
+        <Label Text="Touch the screen to start scanning"  
                    Grid.Row="1" Style="{StaticResource LargeText}" TextColor ="White"/>
         <Image Grid.Row="2" Source="{utilities:ImageResource PassFailSample.Resources.Images.mx1000_barcode_reader.png}" />
-
     </Grid>
 
 </ContentPage>

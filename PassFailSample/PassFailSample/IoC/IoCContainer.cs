@@ -44,6 +44,9 @@ namespace PassFailSample.IoC
             builder.RegisterType<ComponentScreen>().AsSelf().As<IViewFor>().SingleInstance();
             builder.RegisterType<ComponentViewModel>().SingleInstance();
 
+            builder.RegisterType<ResultsScreen>().AsSelf().As<IViewFor>().SingleInstance();
+            builder.RegisterType<ResultsScreenViewModel>().SingleInstance();
+
             IoCContainer.Container = builder.Build();
         }
     }

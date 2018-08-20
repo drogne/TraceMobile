@@ -6,8 +6,6 @@ using PassFailSample.Utilities;
 using PassFailSample.IoC;
 using Autofac;
 using PassFailSample.Helpers;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace PassFailSample.ViewModels
 {
@@ -31,17 +29,6 @@ namespace PassFailSample.ViewModels
 
         protected const int TIMEOUT_TIME = 5000;
         protected IdleTimeoutTimer TimeoutTimer { get; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
 
         #endregion
 

@@ -27,6 +27,7 @@ namespace PassFailSample.Models
                 }
                 ScreensList.Add(typeof(OrderViewModel)); // always add
                 ScreensList.Add(typeof(ComponentViewModel)); // always add
+                ScreensList.Add(typeof(ResultsScreenViewModel)); // always add
                 //if (settings.BoolBarcodeScannedScreenEnabled)
                 //{
                 //    ScreensList.Add(typeof(BarcodeScannedScreenViewModel));
@@ -63,6 +64,19 @@ namespace PassFailSample.Models
             {
                 return typeof(ScanRequestedScreenViewModel);
             }
+        }
+
+        public static Type GetSpecificScreen(string ScreenName)
+        {
+            foreach(Type ScreenListType in ScreensList)
+            {
+                if(ScreenListType.FullName == ScreenName)
+                {
+                    return ScreenListType;
+                }
+            }
+
+            return typeof(OrderViewModel);
         }
 
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using PassFailSample.Helpers;
 using PassFailSample.Models;
 using Xamarin.Forms;
@@ -55,7 +54,7 @@ namespace PassFailSample.ViewModels
 
         public override void Deinitialize()
         {
-            this.OrderNumber = String.Empty;
+            this.OrderNumber = string.Empty;
             base.Deinitialize();
             MessagingCenter.Unsubscribe<Page, string>(this, "GoodRead");
         }

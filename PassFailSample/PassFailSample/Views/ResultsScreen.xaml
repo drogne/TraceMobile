@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassFailSample.Views.ResultsScreen"
+             BackgroundColor="{Binding ColorBackground}"
+             Title="{Binding Settings.NavigationBarTitle}"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <Grid Padding="{StaticResource GridPadding}" BackgroundColor="{Binding ColorBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="{Binding OwerwriteHeight}" />
+                <RowDefinition Height="{Binding OptionsHeight}" />
+                <RowDefinition Height="{Binding OptionsHeight}" />
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="2.2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Order Number : "  Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+            <Label Text="{Binding Session.OrderNumber}" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Font="16"/>
+            <Label Text="Component Number : " Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>
+            <Label Text="{Binding Session.ComponentNumber}" Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Font="16"/>
+            <Label Text="Result : " Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand"  VerticalOptions="Center"/>
+            <Label Text="{Binding Session.Result}" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Font="32"/>
+            <Label Text="{Binding Session.ResultDescription}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Font="16"/>
+            <Button Text="Yes" Style="{StaticResource StandardButtonStyle}" Command="{Binding OwerWriteYesCommand}" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <!--<Button Text="Yes" Grid.Row="4" Grid.Column="0" Command="{Binding ProceedCommand}" IsEnabled="{Binding CanProceed}" VerticalOptions="Center"/>-->
+            <Button Text="No" Style="{StaticResource StandardButtonStyle}" Command="{Binding OwerWriteNoCommand}" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Picker Title="Select a Component" x:Name="xamlPicker" ItemsSource="{Binding PickerSource}" SelectedItem="{Binding SelectedOption}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <Button Text="Ok" Style="{StaticResource StandardButtonStyle}" Command="{Binding OptionsCommand}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Text="Click here to scan another Order/Component.   " Style="{StaticResource StandardButtonStyle}" Command="{Binding NewScanCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
