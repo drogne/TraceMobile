@@ -95,6 +95,8 @@ namespace PassFailSample.ViewModels
             Service1Client client = new Service1Client();
             client.ProcessBarCodeAsync(this.Session.OrderNumber, this.Session.ComponentNumber, Pars);
             client.ProcessBarCodeCompleted += Client_ProcessBarCodeCompleted;
+
+            //RefreshProperties();
         }
 
         private void OwerWriteNoMethod()
@@ -110,6 +112,8 @@ namespace PassFailSample.ViewModels
             Service1Client client = new Service1Client();
             client.ProcessBarCodeAsync(this.Session.OrderNumber, this.Session.ComponentNumber, Pars);
             client.ProcessBarCodeCompleted += Client_ProcessBarCodeCompleted;
+
+            //RefreshProperties();
         }
 
         private void NewScanMethod()

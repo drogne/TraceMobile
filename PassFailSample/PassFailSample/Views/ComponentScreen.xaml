@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
 
             <Label Text="Order Number" Grid.Row="0" Style="{StaticResource LargeText}"/>
-            <Label Text="{Binding OrderNumber}" Grid.Row="1" Style="{StaticResource CognexFont}"/>
+            <Label Text="{Binding Session.OrderNumber}" Grid.Row="1" Style="{StaticResource CognexFont}"/>
             <Label Text="Scan the component number" Grid.Row="2" Style="{StaticResource LargeText}"/>
             <!--<Entry Text="{Binding ComponentNumber}" Grid.Row="3" Style="{StaticResource EntryStyle}" />-->
             <Editor Text="{Binding ComponentNumber}" Grid.Row="3" Style="{StaticResource EditorStyle}" />

@@ -9,26 +9,7 @@ namespace PassFailSample.ViewModels
 {
     public class ComponentViewModel : BaseViewModel
     {
-        //public Session Session { get; private set; }
-        //private IBarcodeScanner Scanner { get; set; }
-        //public ComponentViewModel(IdleTimeoutTimer timer, Settings Settings, Session session) : base(timer, Settings)
-        //{
-        //    this.Session = session;
-        //    this.Scanner = DependencyService.Get<IBarcodeScanner>();
-        //}
-
         #region Properties
-
-        private string _OrderNumber;
-
-        public string OrderNumber
-        {
-            get => this._OrderNumber;
-            set
-            {
-                this.SetProperty(ref this._OrderNumber, value);
-            }
-        }
 
         private string _ComponentNumber;
 
@@ -60,7 +41,6 @@ namespace PassFailSample.ViewModels
         public ComponentViewModel(IdleTimeoutTimer timer, Settings Settings, Session session) : base(timer, Settings)
         {
             this.Session = session;
-            this.OrderNumber = session.OrderNumber;
             this.ComponentNumber = string.Empty;
             this.Scanner = DependencyService.Get<IBarcodeScanner>();
             this.ProceedCommand = new Command(() => this.CompleteScreen());
@@ -68,7 +48,6 @@ namespace PassFailSample.ViewModels
 
         public override void Initialize()
         {
-            this.OrderNumber = Session.OrderNumber;
             this.ComponentNumber = string.Empty;
             base.Initialize();
             MessagingCenter.Subscribe<Page, string>(this, "GoodRead", this._Scanner_BarcodeScanned, App.Current.MainPage);
@@ -76,7 +55,6 @@ namespace PassFailSample.ViewModels
 
         public override void Deinitialize()
         {
-            this.OrderNumber = string.Empty;
             this.ComponentNumber = string.Empty;
             base.Deinitialize();
             MessagingCenter.Unsubscribe<Page, string>(this, "GoodRead");
@@ -90,15 +68,19 @@ namespace PassFailSample.ViewModels
         {
             ObservableCollection<string> Pars = new ObservableCollection<string>() { "", "", "Test-Cognex", "" };
             Service1Client client = new Service1Client();
-            client.ProcessBarCodeAsync(OrderNumber, ComponentNumber, Pars);
+            client.ProcessBarCodeAsync(this.Session.OrderNumber, ComponentNumber, Pars);
             client.ProcessBarCodeCompleted += Client_ProcessBarCodeCompleted;
+
+            //this.Session.ComponentNumber = this.ComponentNumber;
+            //this.Session.Result = "Pass";
+            //this.Session.ResultDescription = "Passed";
+            //this.NavService.NavigateTo(EnabledScreens.GetNextScreen(this));
         }
 
         private void Client_ProcessBarCodeCompleted(object sender, ProcessBarCodeCompletedEventArgs e)
         {
             ObservableCollection<string> vals = e.Result;
 
-            this.Session.OrderNumber = this.OrderNumber;
             this.Session.ComponentNumber = this.ComponentNumber;
             this.Session.Result = vals[0].ToString();
             this.Session.ResultDescription = vals[1].ToString();
